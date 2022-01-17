@@ -1,0 +1,5 @@
+./important.json
+./env
+/node_modules
+.env
+secrets.json
