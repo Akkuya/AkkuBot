@@ -1,4 +1,4 @@
-import { GuildMember, Permissions } from "discord.js"
+import { Permissions } from "discord.js"
 export default async ({client, message, args}) => {
     if (!message.member.permissions.has(Permissions.FLAGS.KICK_MEMBERS)) { message.reply(`You does not have permission to kick that member.`); return }
     
