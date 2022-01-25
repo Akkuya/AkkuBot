@@ -3,7 +3,6 @@ import secrets from './secrets.json' assert { type: 'json' };
  
 import * as commands from './cmds/index.js';
 
-const allIntents = new Intents(32767);
 const myIntents = new Intents();
 myIntents.add(
     Intents.FLAGS.GUILD_PRESENCES,
@@ -23,7 +22,6 @@ client.on('ready', () => {
 
 
 client.on('messageCreate', message => {
-    console.log(message.channel)
     
     if(!message.content.startsWith(secrets.prefix.toLowerCase())) {  return }
 
