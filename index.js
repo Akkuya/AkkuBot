@@ -1,6 +1,6 @@
 import { Client, Intents, MessageEmbed, MessageReaction, WelcomeChannel}  from 'discord.js';
 import secrets from './secrets.json' assert { type: 'json' };
-
+ 
 import * as commands from './cmds/index.js';
 
 const allIntents = new Intents(32767);
@@ -19,8 +19,13 @@ const client = new Client({ intents: myIntents });
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
+
+
+
 client.on('messageCreate', message => {
-     if(!message.content.startsWith(secrets.prefix.toLowerCase())) {  return }
+    console.log(message.channel)
+    
+    if(!message.content.startsWith(secrets.prefix.toLowerCase())) {  return }
 
     let commandBody = message.content.slice(secrets.prefix.length);
     let args = commandBody.split(" ")
@@ -36,7 +41,7 @@ client.on('messageCreate', message => {
             
         }
     })
-            
+    
 })
 
 

@@ -6,8 +6,7 @@ export default async ({client, message, args}) => {
     
     const userID = args.shift();
     const noReason = "No reason given";
-    
-    
+        
     const kickedUser = await client.users.fetch(userID)
         .catch(() => null);
 
