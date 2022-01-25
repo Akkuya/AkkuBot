@@ -1,4 +1,4 @@
-import { Client, Intents, MessageEmbed, MessageReaction, WelcomeChannel}  from 'discord.js';
+import { Client, Intents, MessageEmbed }  from 'discord.js';
 import secrets from './secrets.json' assert { type: 'json' };
  
 import * as commands from './cmds/index.js';
@@ -23,7 +23,7 @@ client.on('ready', () => {
 
 client.on('messageCreate', message => {
     
-    if(!message.content.startsWith(secrets.prefix.toLowerCase())) {  return }
+    if(!message.content.startsWith(secrets.prefix.toLowerCase())) { return }
 
     let commandBody = message.content.slice(secrets.prefix.length);
     let args = commandBody.split(" ")
@@ -42,6 +42,11 @@ client.on('messageCreate', message => {
     
 })
 
+client.on('threadCreate', (thread) => {
+    thread.join()
+    
+})
+
 
 client.on('guildMemberAdd', (member) => {
     const WelcomeEmbed = new MessageEmbed()
@@ -49,7 +54,7 @@ client.on('guildMemberAdd', (member) => {
         .setTitle(`Welcome ${member.user.tag}!`)
         .setImage(member.user.avatarURL())
         .setTimestamp()
-    client.channels.fetch(commands.dm.welcomeChannel)
+    client.channels.fetch('930536238153343026')
     .then(channel => channel.send({ embeds: [WelcomeEmbed] }))
 })
 
