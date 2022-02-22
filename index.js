@@ -44,7 +44,6 @@ client.on('messageCreate', message => {
 
 client.on('threadCreate', (thread) => {
     thread.join()
-    
 })
 
 
